@@ -16,6 +16,11 @@
 		</listener-class>
 	</listener>
 
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>ui-darkness</param-value>
+	</context-param>
+
 	<!-- SPRING MVC -->
 
 	<servlet>
