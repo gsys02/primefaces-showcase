@@ -8,10 +8,9 @@
 
 	<ui:define name="headIncludes">
 		<script>
-			
 			function a() {
 				var b = $('#aForm\\:out').html();
-				
+
 				if (b == "true") {
 					$('#aForm\\:yo').show();
 				} else {
@@ -19,58 +18,104 @@
 				}
 			}
 
-			$(function() {
-				$('#aForm\\:counter').focusin(function(){					
-					if($(this).text() == ""){
-						console.log("ss");
-						$('#aForm\\:yo').hide();
-					}
-					
-				});
-			});
+			function aa(str) {
+				console.log(str);
+				$('#s').fadeIn();
+			}
 		</script>
+
+		<style>
+td {
+	height: 100px;
+	width: 100px;
+	border: 1px solid #000;
+}
+
+.top {
+	vertical-align: top;
+}
+
+.a {
+	height: 100px;
+	width: 100px;
+	border: 1px solid #000;
+}
+
+.middle {
+	vertical-align: middle;
+}
+
+.bottom {
+
+	vertical-align: bottom;
+}
+
+#baseline {
+	vertical-align: baseline;
+}
+
+#sub {
+	vertical-align: sub;
+}
+
+#super {
+	vertical-align: super;
+}
+</style>
+
 	</ui:define>
 
 	<ui:define name="content">
 		<h:form id="aForm">
 
-
-
-
-			<h:outputText value="Keyup: " />
-			<p:inputText id="counter" value="#{demoService.text}">
-				<p:ajax event="keyup" listener="#{demoService.handleKeyEvent}"
-					update="out" oncomplete="a()" />
-			</p:inputText>
-			<h:outputText id="out" value="#{demoService.onTooltip}"
-				style="display:none" />
-
-
-
-			<p:tooltip id="yo" for="counter" showEvent="focus" hideEvent="blur">
-
-				<div style="width: 200px; height: 200px">
-					<div style="width: 100%">
-						<span>No se encotro la exhibicion¿desea agregarla?</span>
-					</div>
-					<div style="text-align: center; width: 100%">
-						<div style="float: left;">
-							<p:commandButton value="Modal" type="button"
-								onclick="PF('dlg2').show();" />
-						</div>
-						<div style="float: left;">
-							<p:commandButton value="No" />
-						</div>
-					</div>
+			<div>
+				<div style="float: left;">
+					<p:inputText id="txt" value="#{demoService.txt}" />
 				</div>
+				<div style="float: left;">
+					<p:commandButton id="btn" value="search" update="txt">
+						<p:ajax listener="#{demoService.search}" process="@this txt"
+							update="yu" />
+					</p:commandButton>
+				</div>
+				<div style="float: left; vertical-align: text-bottom;">
+					<p:outputPanel id="yu">
+
+						<p:outputLabel value="#{demoService.txt}" style="" />
+
+					</p:outputPanel>
+				</div>
+				<div
+					style="float: left; vertical-align: bottom; display: table-cell; height: 200px">
+					hola</div>
 
 
-			</p:tooltip>
+				<div id="left"></div>
+				<div
+					style="width: 100px; height: 40px; border: 1px solid gray; display: inline-block; vertical-align: mitext-bottom">Right</div>
 
 
 
+				<p>
+					<span id="baseline">lorem ipsum dolor</span><span id="sub">lorem
+						ipsum dolor</span><span id="super">lorem ipsum dolor</span>
+				</p>
 
 
+
+				<table>
+					<tr>
+						<td class="top">top</td>
+						<td class="middle">middle</td>
+						<td class="bottom">bottom</td>
+					</tr>
+				</table>
+
+				<div class="top a">sss</div>
+				<div class="middle a">sss</div>
+				<div class="bottom a">sss</div>
+
+			</div>
 
 		</h:form>
 
@@ -83,4 +128,3 @@
 	</ui:define>
 
 </ui:composition>
-
